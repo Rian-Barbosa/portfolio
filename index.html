@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Rian Barbosa — Desenvolvedor Back-end em transição para tecnologia, com foco em Java, Python e Ciência de Dados." />
+  <title>Rian Barbosa · Desenvolvedor Back-end</title>
+
+  <!-- Google Fonts: Sora (display) + Inter (corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome para ícones sociais -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       HEADER — fixo no topo, com navegação por âncoras
+  ============================================================ -->
+  <header class="header" id="header" role="banner">
+    <div class="container header__inner">
+
+      <!-- Logotipo / Nome -->
+      <a href="#hero" class="header__logo" aria-label="Voltar ao topo">
+        <span class="logo-bracket">&lt;</span>RB<span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <!-- Navegação principal -->
+      <nav class="nav" id="nav" aria-label="Navegação principal">
+        <ul class="nav__list">
+          <li><a href="#sobre"    class="nav__link" data-section="sobre">Sobre Mim</a></li>
+          <li><a href="#formacao" class="nav__link" data-section="formacao">Formação</a></li>
+          <li><a href="#portfolio" class="nav__link" data-section="portfolio">Portfólio</a></li>
+          <li><a href="#contato" class="nav__link" data-section="contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <!-- Controles do header: tema + hambúrguer -->
+      <div class="header__controls">
+        <!-- Botão tema claro/escuro -->
+        <button class="btn-theme" id="btnTheme" aria-label="Alternar tema claro/escuro">
+          <i class="fa-solid fa-moon" id="themeIcon" aria-hidden="true"></i>
+        </button>
+
+        <!-- Botão hambúrguer (mobile) -->
+        <button class="btn-hamburger" id="btnHamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO SECTION — apresentação principal com cursor animado
+    ============================================================ -->
+    <section class="hero" id="hero" aria-label="Apresentação principal">
+      <div class="container hero__inner">
+
+        <!-- Bloco de texto à esquerda -->
+        <div class="hero__text">
+          <!-- Código decorativo acima do nome -->
+          <p class="hero__eyebrow"><span class="code-tag">&lt;h1&gt;</span></p>
+
+          <h1 class="hero__name">
+            Olá, eu sou<br />
+            <span class="hero__highlight">Rian Barbosa</span><span class="cursor" aria-hidden="true">|</span>
+          </h1>
+
+          <p class="hero__eyebrow hero__eyebrow--close"><span class="code-tag">&lt;/h1&gt;</span></p>
+
+          <!-- Cargo com efeito de digitação -->
+          <p class="hero__role">
+            <span class="role-prefix">// </span>
+            <span id="typedRole">Desenvolvedor Back-end</span>
+          </p>
+
+          <p class="hero__bio">
+            Em transição para tecnologia, unindo bagagem em Ciências Biomédicas com desenvolvimento de software. Foco em Java, Python e soluções orientadas a dados, buscando meu primeiro estágio na área.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#portfolio" class="btn btn--primary">Conheça meu trabalho</a>
+            <a href="#contato"   class="btn btn--outline">Falar comigo</a>
+          </div>
+        </div>
+
+        <!-- Foto de perfil à direita -->
+        <div class="hero__photo-wrapper" aria-hidden="true">
+          <div class="hero__photo-ring">
+            <!-- Placeholder SVG de avatar -->
+            <img
+              src="assets/img/profile.png"
+              alt="Foto de perfil de Rian Barbosa"
+              class="hero__photo"
+              onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 200 200\'%3E%3Ccircle cx=\'100\' cy=\'80\' r=\'45\' fill=\'%237C3AED\'/%3E%3Ccircle cx=\'100\' cy=\'185\' r=\'70\' fill=\'%237C3AED\'/%3E%3C/svg%3E'"
+            />
+          </div>
+          <!-- Badges flutuantes decorativas -->
+          <div class="hero__badge hero__badge--1" aria-label="Estagiário em busca de oportunidade">
+            <i class="fa-solid fa-code" aria-hidden="true"></i>
+            <span>Java · Python</span>
+          </div>
+          <div class="hero__badge hero__badge--2" aria-label="Projetos no GitHub">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+            <span>2 projetos</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Scroll indicator -->
+      <a href="#sobre" class="hero__scroll" aria-label="Rolar para Sobre Mim">
+        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+      </a>
+    </section>
+
+    <!-- ============================================================
+         SOBRE MIM — bio, hobbies e objetivos
+    ============================================================ -->
+    <section class="section sobre" id="sobre" aria-labelledby="sobre-title">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">01 — Sobre Mim</span>
+          <h2 class="section-title" id="sobre-title">Quem está por trás do código?</h2>
+        </div>
+
+        <div class="sobre__grid">
+
+          <!-- Bio principal -->
+          <div class="sobre__text reveal">
+            <p>
+              Sou <strong>Rian Barbosa</strong>, desenvolvedor em formação com base em <strong>Feira de Santana, BA</strong>. Minha trajetória começou na saúde, pois sou formado em biomedicina, e hoje estou em transição para tecnologia, trazendo comigo raciocínio analítico e olhar crítico para dados.
+            </p>
+            <p>
+              Estudo <strong>Análise e Desenvolvimento de Sistemas</strong> na UNINTER e faço pós-graduação em <strong>Bioinformática</strong> na PUC Minas, unindo as duas áreas que mais me fascinam. Trabalho principalmente com <strong>Java e Python</strong>, e tenho interesse crescente em Ciência de Dados e Back-end.
+            </p>
+            <p>
+              Meu objetivo é conquistar meu primeiro estágio em desenvolvimento de software, Back-end ou Ciência de Dados, e evoluir construindo soluções que gerem impacto real.
+            </p>
+
+            <!-- Skills rápidas -->
+            <ul class="skill-chips" aria-label="Habilidades técnicas principais">
+              <li class="chip">Java</li>
+              <li class="chip">Python</li>
+              <li class="chip">R</li>
+              <li class="chip">Spring Boot</li>
+              <li class="chip">MySQL</li>
+              <li class="chip">MongoDB</li>
+              <li class="chip">Git</li>
+              <li class="chip">AWS</li>
+              <li class="chip">JPA / Hibernate</li>
+            </ul>
+          </div>
+
+          <!-- Cards de hobbies / interesses -->
+          <aside class="sobre__hobbies reveal" aria-label="Hobbies e interesses">
+            <h3 class="sobre__hobbies-title">Além do computador</h3>
+            <div class="hobby-grid">
+              <div class="hobby-card">
+                <i class="fa-solid fa-music" aria-hidden="true"></i>
+                <span>Piano</span>
+              </div>
+              <div class="hobby-card">
+                <i class="fa-solid fa-guitar" aria-hidden="true"></i>
+                <span>Instrumentos Musicais</span>
+              </div>
+              <div class="hobby-card">
+                <i class="fa-solid fa-microphone" aria-hidden="true"></i>
+                <span>Gravações</span>
+              </div>
+              <div class="hobby-card">
+                <i class="fa-solid fa-car" aria-hidden="true"></i>
+                <span>Dirigir</span>
+              </div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FORMAÇÃO — acadêmico, cursos e idiomas
+    ============================================================ -->
+    <section class="section formacao" id="formacao" aria-labelledby="formacao-title">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">02 — Formação</span>
+          <h2 class="section-title" id="formacao-title">Minha jornada de aprendizado</h2>
+        </div>
+
+        <div class="formacao__grid">
+
+          <!-- Timeline acadêmica -->
+          <div class="timeline reveal" aria-label="Formação acadêmica">
+            <h3 class="formacao__sub">Acadêmica</h3>
+            <ol class="timeline__list">
+
+              <li class="timeline__item">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div class="timeline__content">
+                  <span class="timeline__year">Set/2025 – Set/2027 (prev.)</span>
+                  <h4 class="timeline__course">Bioinformática</h4>
+                  <p class="timeline__institution">Pós-graduação Lato Sensu — PUC Minas</p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div class="timeline__content">
+                  <span class="timeline__year">Jul/2025 – Dez/2027 (prev.)</span>
+                  <h4 class="timeline__course">Análise e Desenvolvimento de Sistemas</h4>
+                  <p class="timeline__institution">CST — UNINTER Centro Universitário Internacional</p>
+                </div>
+              </li>
+
+              <li class="timeline__item">
+                <div class="timeline__dot" aria-hidden="true"></div>
+                <div class="timeline__content">
+                  <span class="timeline__year">Concluído em 2025</span>
+                  <h4 class="timeline__course">Ciências Biomédicas</h4>
+                  <p class="timeline__institution">Graduação — UniFTC</p>
+                </div>
+              </li>
+
+            </ol>
+          </div>
+
+          <!-- Cursos livres -->
+          <div class="cursos reveal" aria-label="Cursos e certificações">
+            <h3 class="formacao__sub">Cursos & Certificações</h3>
+            <ul class="cursos__list">
+              <li class="curso-item">
+                <i class="fa-brands fa-java" aria-hidden="true"></i>
+                <div>
+                  <strong>Fundamentos Java · POO · Programação Funcional</strong>
+                  <span>Curso complementar</span>
+                </div>
+              </li>
+              <li class="curso-item">
+                <i class="fa-solid fa-leaf" aria-hidden="true"></i>
+                <div>
+                  <strong>Spring Boot · JavaFX · JPA e Hibernate</strong>
+                  <span>Curso complementar</span>
+                </div>
+              </li>
+              <li class="curso-item">
+                <i class="fa-solid fa-database" aria-hidden="true"></i>
+                <div>
+                  <strong>MySQL · MongoDB</strong>
+                  <span>Curso complementar</span>
+                </div>
+              </li>
+              <li class="curso-item">
+                <i class="fa-solid fa-flask" aria-hidden="true"></i>
+                <div>
+                  <strong>Software R aplicado à Vigilância em Saúde</strong>
+                  <span>OPAS</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Idiomas com barras de progresso -->
+          <div class="idiomas reveal" aria-label="Idiomas">
+            <h3 class="formacao__sub">Idiomas</h3>
+            <ul class="idiomas__list">
+
+              <li class="idioma-item">
+                <div class="idioma-header">
+                  <span class="idioma-nome">Português</span>
+                  <span class="idioma-nivel">Nativo</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Nível de português: nativo">
+                  <div class="progress-fill" style="--target: 100%"></div>
+                </div>
+              </li>
+
+              <li class="idioma-item">
+                <div class="idioma-header">
+                  <span class="idioma-nome">Inglês</span>
+                  <span class="idioma-nivel">Fluente</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Nível de inglês: fluente">
+                  <div class="progress-fill" style="--target: 100%"></div>
+                </div>
+              </li>
+
+                            <li class="idioma-item">
+                <div class="idioma-header">
+                  <span class="idioma-nome">Francês</span>
+                  <span class="idioma-nivel">Básico</span>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="Nível de inglês: fluente">
+                  <div class="progress-fill" style="--target: 10%"></div>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PORTFÓLIO — cards de projetos
+    ============================================================ -->
+    <section class="section portfolio" id="portfolio" aria-labelledby="portfolio-title">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">03 — Portfólio</span>
+          <h2 class="section-title" id="portfolio-title">O que já construí</h2>
+        </div>
+
+        <div class="portfolio__grid">
+
+          <!-- Card 1: Cofrinho em Java -->
+          <article class="project-card reveal" aria-label="Projeto: Cofrinho em Java">
+            <div class="project-card__img-wrapper">
+              <div class="project-card__img project-card__img--placeholder" aria-hidden="true">
+                <i class="fa-solid fa-piggy-bank"></i>
+              </div>
+              <div class="project-card__overlay" aria-hidden="true"></div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Cofrinho em Java</h3>
+              <p class="project-card__desc">Simulação de cofre digital executado via console, desenvolvido para prática de POO. Gerencia moedas com HashMap e separa responsabilidades entre classes.</p>
+              <ul class="project-card__tags" aria-label="Tecnologias utilizadas">
+                <li>Java</li><li>POO</li><li>HashMap</li>
+              </ul>
+              <div class="project-card__actions">
+                <a href="https://github.com/Rian-Barbosa/poo-hashmap-cofrinho" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost" aria-label="Ver código Cofrinho no GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: Quem é o Impostor? -->
+          <article class="project-card reveal" aria-label="Projeto: Quem é o Impostor?">
+            <div class="project-card__img-wrapper">
+              <div class="project-card__img project-card__img--placeholder project-card__img--2" aria-hidden="true">
+                <i class="fa-solid fa-user-secret"></i>
+              </div>
+              <div class="project-card__overlay" aria-hidden="true"></div>
+            </div>
+            <div class="project-card__body">
+              <h3 class="project-card__title">Quem é o Impostor?</h3>
+              <p class="project-card__desc">App em Java para gerenciamento e sorteio de papéis do jogo "Cidade Dorme", com interface gráfica via JOptionPane (Swing) e estruturas de dados avançadas.</p>
+              <ul class="project-card__tags" aria-label="Tecnologias utilizadas">
+                <li>Java</li><li>Swing</li><li>POO</li><li>HashMap</li>
+              </ul>
+              <div class="project-card__actions">
+                <a href="https://github.com/Rian-Barbosa/quemEoImpostor-JOptionPane" target="_blank" rel="noopener noreferrer" class="btn btn--sm btn--ghost" aria-label="Ver código Quem é o Impostor no GitHub">
+                  <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Placeholder para projetos futuros -->
+          <article class="project-card project-card--coming reveal" aria-label="Próximo projeto em breve">
+            <div class="project-card__coming-inner">
+              <i class="fa-solid fa-plus" aria-hidden="true"></i>
+              <p>Novo projeto em breve</p>
+              <span>Sempre construindo algo novo…</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTATO — formulário com validação JS
+    ============================================================ -->
+    <section class="section contato" id="contato" aria-labelledby="contato-title">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <span class="section-tag">04 — Contato</span>
+          <h2 class="section-title" id="contato-title">Vamos conversar?</h2>
+        </div>
+
+        <div class="contato__grid">
+
+          <!-- Info lateral -->
+          <aside class="contato__info reveal">
+            <p class="contato__intro">Seja para um projeto freelance, uma oportunidade de emprego ou só para bater um papo sobre tecnologia. Manda uma mensagem!</p>
+
+            <ul class="contato__links" aria-label="Outras formas de contato">
+              <li>
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <a href="mailto:rianbarbosa1208@gmail.com">rianbarbosa.dev@gmail.com</a>
+              </li>
+              <li>
+                <i class="fa-brands fa-linkedin" aria-hidden="true"></i>
+                <a href="https://www.linkedin.com/in/rianbarbosa-dev" target="_blank" rel="noopener noreferrer">linkedin.com/in/rianbarbosa-dev</a>
+              </li>
+              <li>
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <a href="https://github.com/rian-barbosa" target="_blank" rel="noopener noreferrer">github.com/rian-barbosa</a>
+              </li>
+            </ul>
+          </aside>
+
+          <!-- Formulário de contato -->
+          <form class="contato__form reveal" id="contactForm" novalidate aria-label="Formulário de contato">
+
+            <!-- Campo: Nome -->
+            <div class="form-group">
+              <label for="inputNome" class="form-label">Nome</label>
+              <input
+                type="text"
+                id="inputNome"
+                name="nome"
+                class="form-input"
+                placeholder="Seu nome completo"
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="erroNome"
+              />
+              <span class="form-error" id="erroNome" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo: E-mail -->
+            <div class="form-group">
+              <label for="inputEmail" class="form-label">E-mail</label>
+              <input
+                type="email"
+                id="inputEmail"
+                name="email"
+                class="form-input"
+                placeholder="seu@email.com"
+                autocomplete="email"
+                aria-required="true"
+                aria-describedby="erroEmail"
+              />
+              <span class="form-error" id="erroEmail" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Campo: Mensagem -->
+            <div class="form-group">
+              <label for="inputMensagem" class="form-label">Mensagem</label>
+              <textarea
+                id="inputMensagem"
+                name="mensagem"
+                class="form-input form-textarea"
+                placeholder="Olá, Rian! Gostaria de conversar sobre…"
+                rows="5"
+                aria-required="true"
+                aria-describedby="erroMensagem"
+              ></textarea>
+              <span class="form-error" id="erroMensagem" role="alert" aria-live="polite"></span>
+            </div>
+
+            <!-- Botão enviar -->
+            <button type="submit" class="btn btn--primary btn--full" id="btnEnviar">
+              <span id="btnEnviarText">Enviar mensagem</span>
+              <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+            </button>
+
+            <!-- Feedback de sucesso -->
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+              <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+              Mensagem enviada com sucesso! Respondo em breve.
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — nome, ano, redes sociais
+  ============================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+
+      <p class="footer__copy">
+        &copy; <span id="anoAtual"></span> Rian Barbosa — Todos os direitos reservados.
+      </p>
+
+      <ul class="footer__social" aria-label="Redes sociais">
+        <li>
+          <a href="https://github.com/rian-barbosa" target="_blank" rel="noopener noreferrer" aria-label="GitHub de Rian Barbosa">
+            <i class="fa-brands fa-github" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/rianbarbosa-dev" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Rian Barbosa">
+            <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:rianbarbosa1208@gmail.com" aria-label="Enviar e-mail para Rian Barbosa">
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+
+      <p class="footer__made">
+        Feito com <i class="fa-solid fa-heart" aria-hidden="true"></i> e <span class="code-tag">&#60;/código&#62;</span>
+      </p>
+
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
