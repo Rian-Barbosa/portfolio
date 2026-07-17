@@ -980,6 +980,26 @@ button {
 
 .form-success i { font-size: 1.1rem; }
 
+/* Mensagem de erro geral no envio */
+.form-error-summary {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem var(--space-sm);
+  font-size: 0.88rem;
+  color: #EF4444;
+}
+
+.form-error-summary:not([hidden]) {
+  display: flex;
+}
+
+.form-error-summary i { font-size: 1.1rem; }
+
+
 /* ============================================================
    FOOTER
    ============================================================ */

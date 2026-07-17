@@ -13,8 +13,8 @@
    Lê e salva a preferência do usuário no LocalStorage.
    ============================================================ */
 (function initTheme() {
-  const html      = document.documentElement;
-  const btnTheme  = document.getElementById('btnTheme');
+  const html = document.documentElement;
+  const btnTheme = document.getElementById('btnTheme');
   const themeIcon = document.getElementById('themeIcon');
 
   // Lê preferência salva ou usa preferência do sistema operacional
@@ -52,7 +52,7 @@
    ============================================================ */
 (function initHamburger() {
   const btnHamburger = document.getElementById('btnHamburger');
-  const nav          = document.getElementById('nav');
+  const nav = document.getElementById('nav');
 
   btnHamburger.addEventListener('click', () => {
     const isOpen = nav.classList.toggle('nav--open');
@@ -86,7 +86,7 @@
    3. HEADER — sombra ao rolar + link ativo conforme seção
    ============================================================ */
 (function initHeaderBehavior() {
-  const header   = document.getElementById('header');
+  const header = document.getElementById('header');
   const navLinks = document.querySelectorAll('.nav__link[data-section]');
   // Seleciona todas as seções que têm id correspondente
   const sections = Array.from(navLinks).map(l => document.getElementById(l.dataset.section)).filter(Boolean);
@@ -190,15 +190,18 @@
    7. VALIDAÇÃO E ENVIO SIMULADO DO FORMULÁRIO
    ============================================================ */
 (function initContactForm() {
-  const form       = document.getElementById('contactForm');
+  const form = document.getElementById('contactForm');
   if (!form) return;
 
-  const inputNome     = document.getElementById('inputNome');
-  const inputEmail    = document.getElementById('inputEmail');
+  const inputNome = document.getElementById('inputNome');
+  const inputEmail = document.getElementById('inputEmail');
   const inputMensagem = document.getElementById('inputMensagem');
-  const btnEnviar     = document.getElementById('btnEnviar');
-  const btnText       = document.getElementById('btnEnviarText');
-  const formSuccess   = document.getElementById('formSuccess');
+  const btnEnviar = document.getElementById('btnEnviar');
+  const btnText = document.getElementById('btnEnviarText');
+  const formSuccess = document.getElementById('formSuccess');
+  const formErrorSummary = document.getElementById('formErrorSummary');
+
+  const WEB3FORMS_ACCESS_KEY = '3839696a-04aa-442f-befc-8f9de9e48a35';
 
   /**
    * Valida um campo e exibe/limpa a mensagem de erro.
@@ -208,7 +211,7 @@
    * @returns {boolean} true se válido
    */
   function validate(field, errorId, rule) {
-    const msg     = rule(field.value.trim());
+    const msg = rule(field.value.trim());
     const errorEl = document.getElementById(errorId);
 
     if (msg) {
@@ -224,16 +227,16 @@
 
   /** Regras de validação para cada campo */
   const rules = {
-    nome:     v => !v                        ? 'Informe seu nome.'                 : '',
-    email:    v => !v                        ? 'Informe seu e-mail.'               :
-                   !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? 'Digite um e-mail válido.'  : '',
-    mensagem: v => !v                        ? 'Escreva sua mensagem.'             :
-                   v.length < 10             ? 'Mensagem muito curta (mín. 10 chars).' : '',
+    nome: v => !v ? 'Informe seu nome.' : '',
+    email: v => !v ? 'Informe seu e-mail.' :
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? 'Digite um e-mail válido.' : '',
+    mensagem: v => !v ? 'Escreva sua mensagem.' :
+      v.length < 10 ? 'Mensagem muito curta (mín. 10 chars).' : '',
   };
 
   // Validação em tempo real ao sair do campo (blur)
-  inputNome.addEventListener('blur',     () => validate(inputNome,     'erroNome',     rules.nome));
-  inputEmail.addEventListener('blur',    () => validate(inputEmail,    'erroEmail',    rules.email));
+  inputNome.addEventListener('blur', () => validate(inputNome, 'erroNome', rules.nome));
+  inputEmail.addEventListener('blur', () => validate(inputEmail, 'erroEmail', rules.email));
   inputMensagem.addEventListener('blur', () => validate(inputMensagem, 'erroMensagem', rules.mensagem));
 
   // Limpa erro ao começar a digitar novamente
@@ -252,8 +255,8 @@
     e.preventDefault();
 
     // Valida todos os campos
-    const nomeOk     = validate(inputNome,     'erroNome',     rules.nome);
-    const emailOk    = validate(inputEmail,    'erroEmail',    rules.email);
+    const nomeOk = validate(inputNome, 'erroNome', rules.nome);
+    const emailOk = validate(inputEmail, 'erroEmail', rules.email);
     const mensagemOk = validate(inputMensagem, 'erroMensagem', rules.mensagem);
 
     if (!nomeOk || !emailOk || !mensagemOk) {
@@ -263,25 +266,58 @@
       return;
     }
 
-    // Simula envio: desabilita botão e mostra loading
-    btnEnviar.disabled    = true;
-    btnText.textContent   = 'Enviando…';
+    // Limpa estados de feedback anteriores
+    formSuccess.hidden = true;
+    formErrorSummary.hidden = true;
 
-    setTimeout(() => {
-      // Limpa campos
-      form.reset();
-      [inputNome, inputEmail, inputMensagem].forEach(f => {
-        f.classList.remove('form-input--error');
+    // Desabilita botão e mostra estado de envio
+    btnEnviar.disabled = true;
+    btnText.textContent = 'Enviando…';
+
+    const formData = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      name: inputNome.value.trim(),
+      email: inputEmail.value.trim(),
+      message: inputMensagem.value.trim(),
+      subject: 'Nova Mensagem de Contato — Portfólio'
+    };
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(async response => {
+        const json = await response.json();
+        if (response.status === 200 || json.success) {
+          // Limpa campos
+          form.reset();
+          [inputNome, inputEmail, inputMensagem].forEach(f => {
+            f.classList.remove('form-input--error');
+          });
+
+          // Exibe feedback de sucesso
+          formSuccess.hidden = false;
+          // Esconde a mensagem de sucesso após 8 segundos
+          setTimeout(() => { formSuccess.hidden = true; }, 8000);
+        } else {
+          console.error('Erro retornado pela API Web3Forms:', json);
+          formErrorSummary.innerHTML = `<i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> ${json.message || 'Erro ao enviar. Por favor, tente novamente.'}`;
+          formErrorSummary.hidden = false;
+        }
+      })
+      .catch(error => {
+        console.error('Erro de conexão ao enviar formulário:', error);
+        formErrorSummary.innerHTML = `<i class="fa-solid fa-circle-xmark" aria-hidden="true"></i> Não foi possível se conectar ao servidor de e-mail. Verifique sua conexão e tente novamente.`;
+        formErrorSummary.hidden = false;
+      })
+      .finally(() => {
+        btnEnviar.disabled = false;
+        btnText.textContent = 'Enviar mensagem';
       });
-
-      // Exibe feedback de sucesso
-      formSuccess.hidden  = false;
-      btnEnviar.disabled  = false;
-      btnText.textContent = 'Enviar mensagem';
-
-      // Esconde a mensagem de sucesso após 6 segundos
-      setTimeout(() => { formSuccess.hidden = true; }, 6000);
-    }, 1400); // simula latência de rede
   });
 })();
 
@@ -291,7 +327,7 @@
    ============================================================ */
 window.addEventListener('resize', () => {
   if (window.innerWidth > 768) {
-    const nav          = document.getElementById('nav');
+    const nav = document.getElementById('nav');
     const btnHamburger = document.getElementById('btnHamburger');
     nav.classList.remove('nav--open');
     btnHamburger.setAttribute('aria-expanded', 'false');
