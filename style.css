@@ -543,6 +543,10 @@ button {
   margin-top: var(--space-md);
 }
 
+.sobre__actions {
+  margin-top: var(--space-lg);
+}
+
 .chip {
   font-family: var(--font-mono);
   font-size: 0.78rem;
