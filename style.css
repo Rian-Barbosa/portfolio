@@ -3,19 +3,19 @@
    ============================================================ */
 :root {
   /* Cores — tema escuro (padrão) */
-  --bg-primary:    #0D0D14;
-  --bg-secondary:  #13131F;
-  --bg-card:       #1A1A2E;
-  --accent:        #7C3AED;
-  --accent-glow:   rgba(124, 58, 237, 0.25);
-  --accent-light:  #9D5FF5;
+  --bg-primary:    #0B0F17;
+  --bg-secondary:  #101622;
+  --bg-card:       #172030;
+  --accent:        #0ea5e9;
+  --accent-glow:   rgba(14, 165, 233, 0.25);
+  --accent-light:  #38bdf8;
   --green:         #10B981;
   --text-primary:  #F0EFF5;
   --text-secondary:#9D9BAD;
   --text-muted:    #5A5870;
-  --border:        rgba(124, 58, 237, 0.18);
+  --border:        rgba(14, 165, 233, 0.18);
   --shadow-card:   0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-btn:    0 0 18px rgba(124, 58, 237, 0.4);
+  --shadow-btn:    0 0 18px rgba(14, 165, 233, 0.4);
 
   /* Fontes */
   --font-display: 'Sora', system-ui, sans-serif;
@@ -43,15 +43,15 @@
 
 /* Tema claro — sobrescrito quando data-theme="light" */
 [data-theme="light"] {
-  --bg-primary:    #F5F4FA;
-  --bg-secondary:  #EEECF7;
+  --bg-primary:    #F4F8FA;
+  --bg-secondary:  #EBF2F5;
   --bg-card:       #FFFFFF;
-  --text-primary:  #120F21;
-  --text-secondary:#4B4768;
-  --text-muted:    #9390A8;
-  --border:        rgba(124, 58, 237, 0.15);
-  --shadow-card:   0 4px 24px rgba(18, 15, 33, 0.08);
-  --shadow-btn:    0 0 18px rgba(124, 58, 237, 0.25);
+  --text-primary:  #0F172A;
+  --text-secondary:#475569;
+  --text-muted:    #94A3B8;
+  --border:        rgba(14, 165, 233, 0.15);
+  --shadow-card:   0 4px 24px rgba(15, 23, 42, 0.08);
+  --shadow-btn:    0 0 18px rgba(14, 165, 233, 0.25);
 }
 
 /* ============================================================
@@ -315,7 +315,7 @@ button {
 }
 
 .hero__highlight {
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 50%, #C084FC 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 50%, #7dd3fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -777,7 +777,7 @@ button {
 }
 
 /* Gradientes distintos por projeto */
-.project-card__img--placeholder   { background: linear-gradient(135deg, #1E1B3A, #3B1F6A); color: var(--accent-light); }
+.project-card__img--placeholder   { background: linear-gradient(135deg, #0B192C, #1E3A8A); color: var(--accent-light); }
 .project-card__img--2              { background: linear-gradient(135deg, #0D2E2E, #0D5C3A); color: var(--green); }
 .project-card__img--3              { background: linear-gradient(135deg, #2E1A0D, #6A3A0D); color: #F59E0B; }
 
